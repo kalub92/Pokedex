@@ -27,10 +27,10 @@ id,identifier,species_id,height,weight,base_experience,order,is_default
 26,raichu,26,8,300,214,31,1
 27,sandshrew,27,6,120,60,32,1
 28,sandslash,28,10,295,158,33,1
-29,nidoran-f,29,4,70,55,34,1
+29,nidoran (Female),29,4,70,55,34,1
 30,nidorina,30,8,200,128,35,1
 31,nidoqueen,31,13,600,223,36,1
-32,nidoran-m,32,5,90,55,37,1
+32,nidoran (Male),32,5,90,55,37,1
 33,nidorino,33,9,195,128,38,1
 34,nidoking,34,14,620,223,39,1
 35,clefairy,35,6,75,113,41,1

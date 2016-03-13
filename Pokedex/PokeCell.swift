@@ -13,6 +13,13 @@ class PokeCell: UICollectionViewCell {
     @IBOutlet weak var thumbImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        layer.cornerRadius = 5.0
+        
+    }
+    
     var pokemon: Pokemon!
     
     func configureCell(pokemon: Pokemon) {
