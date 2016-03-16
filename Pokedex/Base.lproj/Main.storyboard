@@ -37,6 +37,9 @@
                                             <segment title="Moves"/>
                                         </segments>
                                         <color key="tintColor" red="1" green="0.5607843137254902" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segmentedControllerAction:" destination="OGS-eg-K8k" eventType="valueChanged" id="V8B-Bw-6EA"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zXq-Mg-Kgm">
                                         <rect key="frame" x="0.0" y="49" width="560" height="85"/>
@@ -76,7 +79,7 @@
                                                 <color key="textColor" red="1" green="0.5607843137254902" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grass/Psychic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa4-f9-3CS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grass/Psychic" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aa4-f9-3CS">
                                                 <rect key="frame" x="99" y="0.0" width="233" height="20"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,7 +91,7 @@
                                                 <color key="textColor" red="1" green="0.5607843137254902" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-oC-RW7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="101" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPs-oC-RW7">
                                                 <rect key="frame" x="494" y="0.0" width="66" height="20"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,22 +258,30 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="uqL-8g-HCJ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTy-BX-FTa">
+                                <rect key="frame" x="0.0" y="110" width="600" height="490"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U9O-pL-M3t" firstAttribute="top" secondItem="UTe-5f-lCC" secondAttribute="bottom" constant="8" id="1oR-1L-r0n"/>
                             <constraint firstAttribute="trailing" secondItem="UTe-5f-lCC" secondAttribute="trailing" id="5rn-LL-tt0"/>
+                            <constraint firstItem="YWf-N6-C2J" firstAttribute="top" secondItem="lTy-BX-FTa" secondAttribute="bottom" id="AJz-Si-Xjv"/>
                             <constraint firstItem="YWf-N6-C2J" firstAttribute="top" secondItem="U9O-pL-M3t" secondAttribute="bottom" constant="8" id="D2X-hU-xBs"/>
                             <constraint firstItem="Uzf-rx-SgD" firstAttribute="leading" secondItem="QkL-8i-Ey8" secondAttribute="leading" id="GV6-ii-xN1"/>
                             <constraint firstAttribute="trailing" secondItem="Uzf-rx-SgD" secondAttribute="trailing" id="JHl-ja-y2g"/>
                             <constraint firstItem="lAs-jh-xK8" firstAttribute="top" secondItem="Uzf-rx-SgD" secondAttribute="bottom" constant="20" id="LIC-P2-Uzo"/>
+                            <constraint firstItem="lTy-BX-FTa" firstAttribute="leading" secondItem="QkL-8i-Ey8" secondAttribute="leading" id="P88-8N-CxP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="U9O-pL-M3t" secondAttribute="trailing" id="UQ5-n7-9uW"/>
+                            <constraint firstItem="lTy-BX-FTa" firstAttribute="top" secondItem="Uzf-rx-SgD" secondAttribute="bottom" constant="55" id="YkA-pD-xsx"/>
                             <constraint firstItem="UTe-5f-lCC" firstAttribute="leading" secondItem="QkL-8i-Ey8" secondAttribute="leading" id="aEl-SG-Ry6"/>
                             <constraint firstItem="lAs-jh-xK8" firstAttribute="leading" secondItem="QkL-8i-Ey8" secondAttribute="leadingMargin" id="bPT-DE-OBR"/>
                             <constraint firstItem="UTe-5f-lCC" firstAttribute="top" secondItem="lAs-jh-xK8" secondAttribute="bottom" constant="55" id="bXu-gA-6gv">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="lAs-jh-xK8" secondAttribute="trailing" id="i10-Rn-Bmp"/>
+                            <constraint firstAttribute="trailing" secondItem="lTy-BX-FTa" secondAttribute="trailing" id="oTe-Ur-MhH"/>
                             <constraint firstItem="U9O-pL-M3t" firstAttribute="leading" secondItem="QkL-8i-Ey8" secondAttribute="leadingMargin" id="owh-sL-OX4"/>
                             <constraint firstItem="Uzf-rx-SgD" firstAttribute="top" secondItem="QkL-8i-Ey8" secondAttribute="top" id="sAp-t9-3gy"/>
                         </constraints>
@@ -283,9 +294,11 @@
                         <outlet property="evoLbl" destination="bsy-Q0-zur" id="cSO-Td-Wvr"/>
                         <outlet property="heightLbl" destination="TB7-q6-sC5" id="jXp-SA-Wrj"/>
                         <outlet property="mainImg" destination="w1L-Ud-IVv" id="VIa-9u-mnk"/>
+                        <outlet property="movesView" destination="lTy-BX-FTa" id="hus-Ht-zf3"/>
                         <outlet property="nameLbl" destination="RRm-EP-pA8" id="5cY-eC-Ljo"/>
                         <outlet property="nextEvoImg" destination="qbm-VW-E0L" id="L6L-6J-imK"/>
                         <outlet property="pokedexLbl" destination="4cx-Ad-0zW" id="0gn-0t-VAn"/>
+                        <outlet property="segmentedControl" destination="YQE-NH-wha" id="v8b-ci-ZTH"/>
                         <outlet property="typeLbl" destination="Aa4-f9-3CS" id="IO0-OO-J1v"/>
                         <outlet property="weightLbl" destination="zHa-Gd-qhT" id="K0k-1z-b2D"/>
                     </connections>
@@ -439,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="-25"/>
+            <point key="canvasLocation" x="159" y="-13"/>
         </scene>
     </scenes>
     <resources>

@@ -23,6 +23,9 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var nextEvoImg: UIImageView!
     @IBOutlet weak var evoLbl: UILabel!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var movesView: UIView!
+    
     var pokemon: Pokemon!
 
     override func viewDidLoad() {
@@ -32,9 +35,9 @@ class PokemonDetailVC: UIViewController {
         let img = UIImage(named: "\(pokemon.pokedexid)")
         mainImg.image = img
         currentEvoImg.image = img
+        movesView.hidden = true
 
         pokemon.downloadPokemonDetails { () -> () in
-            //This will be called after download is done.
             self.updateUI()
         }
     }
@@ -82,14 +85,12 @@ class PokemonDetailVC: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func segmentedControllerAction(sender: AnyObject) {
+        if(segmentedControl.selectedSegmentIndex == 0) {
+            movesView.hidden = true
+        } else {
+            movesView.hidden = false
+        }
     }
-    */
 
 }

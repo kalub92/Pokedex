@@ -130,23 +130,16 @@ class Pokemon {
                     
                     if let name = types[0]["name"] {
                         self._type = name.capitalizedString
+                        print(self._type)
                     }
-                    
+                
                     if types.count > 1 {
                         for x in 1 ..< types.count {
                             if let name = types[x]["name"] {
                                 self._type! += "/\(name.capitalizedString)"
                             }
-                            
                         }
-                        
-                    } else {
-                        
-                        self._type = ""
-                        
                     }
-                    
-                    print(self._type)
                     
                     if let descArr = dict["descriptions"] as? [Dictionary<String, String>] where descArr.count > 0 {
                         
@@ -159,12 +152,12 @@ class Pokemon {
                                 if let descDict = descResult.value as? Dictionary<String, AnyObject> {
                                     
                                     if let description = descDict["description"] as? String {
-                                        self._description = description
+                                        let newStr = description.stringByReplacingOccurrencesOfString("POKMON", withString: "Pokémon")
+                                        self._description = newStr
                                     }
+                                    print(self._description)
                                 }
-                                
                                 completed()
-                                
                             }
                         }
                         
