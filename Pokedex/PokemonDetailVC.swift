@@ -46,7 +46,6 @@ class PokemonDetailVC: UIViewController {
         heightLbl.text = pokemon.height
         weightLbl.text = pokemon.weight
         pokedexLbl.text = "\(pokemon.pokedexid)"
-        evoLbl.text = "Next Evolution: \(pokemon.nextEvolutionText) - LVL \(pokemon.nextEvolutionLvl)"
         baseAttackLbl.text = pokemon.attack
         
         if pokemon.nextEvolutionID == "" {
@@ -55,11 +54,14 @@ class PokemonDetailVC: UIViewController {
         } else {
             nextEvoImg.hidden = false
             nextEvoImg.image = UIImage(named: pokemon.nextEvolutionID)
-            var str = "Next Evolution: \(pokemon.nextEvolutionText)"
             
+            var str = "Next Evolution: \(pokemon.nextEvolutionText)"
             if pokemon.nextEvolutionLvl != "" {
-                str += "- LVL \(pokemon.nextEvolutionLvl)"
+                str += " - LVL \(pokemon.nextEvolutionLvl)"
             }
+            
+            evoLbl.text = str
+            
         }
         
         if pokemon.type == "" {

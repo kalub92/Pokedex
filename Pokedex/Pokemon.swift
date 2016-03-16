@@ -160,7 +160,6 @@ class Pokemon {
                                     
                                     if let description = descDict["description"] as? String {
                                         self._description = description
-                                        print(self._description)
                                     }
                                 }
                                 
@@ -196,12 +195,6 @@ class Pokemon {
                         }
                     }
                 }
-                
-                print(self._height)
-                print(self._weight)
-                print(self._defense)
-                print(self._attack)
-                
             }
         }
     }
