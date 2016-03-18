@@ -22,6 +22,62 @@ class Pokemon {
     private var _nextEvolutionID: String!
     private var _nextEvolutionLvl: String!
     private var _pokemonURL: String!
+    private var _movesURL: String!
+    private var _attackName: String!
+    private var _movesID: String!
+    private var _attackDescription: String!
+    private var _attackAccuracy: String!
+    private var _attackPwr: String!
+    private var _ppPoints: String!
+    
+    var ppPoints: String {
+        if _ppPoints == nil {
+            _ppPoints = ""
+        }
+        return _ppPoints
+    }
+
+    var attackPwr: String {
+        if _attackPwr == nil {
+            _attackPwr = ""
+        }
+        return _attackPwr
+    }
+    
+    var attackAccuracy: String {
+        if _attackAccuracy == nil {
+            _attackAccuracy = ""
+        }
+        return _attackAccuracy
+    }
+    
+    var attackDescription: String {
+        if _attackDescription == nil {
+            _attackDescription = ""
+        }
+        return _attackDescription
+    }
+
+    var movesURL: String {
+        if _movesURL == nil {
+            _movesURL = ""
+        }
+        return _movesURL
+    }
+
+    var movesID: String {
+        if _movesID == nil {
+            _movesID = ""
+        }
+        return _movesID
+    }
+    
+    var attackName: String {
+        if _attackName == nil {
+            _attackName = ""
+        }
+        return _attackName
+    }
     
     var description: String {
         if _description == nil {
@@ -99,6 +155,7 @@ class Pokemon {
         self._pokedexid = pokedexid
         
         _pokemonURL = "\(URL_BASE)\(URL_POKEMON)\(self._pokedexid)/"
+        _movesURL = "\(URL_BASE)\(URL_MOVES)\(self._movesID)/"
         
     }
     
@@ -130,7 +187,6 @@ class Pokemon {
                     
                     if let name = types[0]["name"] {
                         self._type = name.capitalizedString
-                        print(self._type)
                     }
                 
                     if types.count > 1 {
@@ -155,7 +211,6 @@ class Pokemon {
                                         let newStr = description.stringByReplacingOccurrencesOfString("POKMON", withString: "Pokémon")
                                         self._description = newStr
                                     }
-                                    print(self._description)
                                 }
                                 completed()
                             }
@@ -182,6 +237,47 @@ class Pokemon {
                                     
                                     if let lvl = evolutions[0]["level"] as? Int {
                                         self._nextEvolutionLvl = "\(lvl)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if let moves = dict["moves"] as? [Dictionary<String, AnyObject>] where moves.count > 0 {
+                                                
+                            if let nameofAttack = moves[0]["name"] as? String {
+                                
+                                self._attackName = nameofAttack
+                                print("Attack Name: \(self._attackName)")
+                                
+                                if let url = moves[0]["resource_uri"] as? String {
+                                    let nsurl = NSURL(string: "\(URL_BASE)\(url)")!
+                                    
+                                    Alamofire.request(.GET, nsurl).responseJSON { response in
+                                        
+                                    let attackDetails =  response.result
+                                        
+                                    if let dict = attackDetails.value as? Dictionary<String, AnyObject> {
+                                            
+                                        if let desc = dict["description"] as? String {
+                                            self._attackDescription = desc
+                                            print("Description: \(self._attackDescription)")
+                                        }
+                                        
+                                        if let accuracy = dict["accuracy"] as? Int {
+                                            self._attackAccuracy = "\(accuracy)"
+                                            print("Accuracy: \(self._attackAccuracy)")
+                                        }
+                                            
+                                        if let power = dict["power"] as? Int {
+                                            self._attackPwr = "\(power)"
+                                            print("Power: \(self._attackPwr)")
+                                        }
+                                            
+                                        if let pp = dict["pp"] as? Int {
+                                            self._ppPoints = "\(pp)"
+                                            print("PP: \(self._ppPoints)")
+                                        }
                                     }
                                 }
                             }

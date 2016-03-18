@@ -8,8 +8,9 @@
 
 import UIKit
 
-class PokemonDetailVC: UIViewController {
+class PokemonDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //Bio Info
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
@@ -26,6 +27,10 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var movesView: UIView!
     
+    @IBOutlet weak var tableView: UITableView!
+        
+    var pokemonMoves = [Pokemon]()
+    var move = MovesTVC()
     var pokemon: Pokemon!
 
     override func viewDidLoad() {
@@ -36,10 +41,13 @@ class PokemonDetailVC: UIViewController {
         mainImg.image = img
         currentEvoImg.image = img
         movesView.hidden = true
-
+        
         pokemon.downloadPokemonDetails { () -> () in
             self.updateUI()
         }
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func updateUI() {
@@ -70,15 +78,33 @@ class PokemonDetailVC: UIViewController {
         if pokemon.type == "" {
             typeLbl.text = "No Defined Type"
         }
+        
+        tableView.reloadData()
+
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCellWithIdentifier("MovesTVC") as? MovesTVC {
+            let move = pokemonMoves[indexPath.row]
+            cell.configureCell(move)
+            return cell
+        } else {
+            return MovesTVC()
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Figure out how to display TVC's based on number of attacks found in PokéAPI
+        return pokemonMoves.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
     @IBAction func backBtn(sender: AnyObject) {
@@ -92,5 +118,5 @@ class PokemonDetailVC: UIViewController {
             movesView.hidden = false
         }
     }
-
+    
 }
